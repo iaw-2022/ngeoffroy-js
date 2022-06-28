@@ -4,32 +4,90 @@
   width: auto;
   max-width: 250px;
 }
-.Header-icons {
+.Header-style {
+
+  position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  top: 0;
+  left: 0;
+  min-width: max-content;
+  max-height: max-content;
+  padding: 5px;
+  background-color: #06283D;
 }
-.Icons ul li{
+.Icons ul li {
   display: inline;
-  list-style-type:none;
+  list-style-type: none;
   margin-right: 10px;
 }
 
+.Logo-header {
+  border-radius: 50px;
+}
+
 .Icons ul li a {
+  width: 165px;
+  height: 60px;
+
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
   text-decoration: none;
-  font-weight: 400;
-  font-size: large;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color:#333;
+  margin-right: 33px;
+  color: #ffff;
 }
 
 .Titulo-Principal {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-weight: 400;
-  font-size:2cm;
-  text-align: center;
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 45px;
+
+  color: #000000;
 }
 
-.Contenido-Principal{
-  
+.Texto-Principal {
+
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+}
+
+.Contenedor-Principal{
+  background-color: #1363DF;
+}
+
+.Contenido-Principal {
+  position: absolute;
+  width: 427px;
+  height: 222px;
+  left: 61px;
+  top: 432px;
+
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+
+  color: #000000;
+}
+
+.Imagen-Equipo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
