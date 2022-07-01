@@ -4,7 +4,6 @@ import Header from "./components/sections/header";
 function App() {
   return (
     <div>
-      <Header />
       <principal />
     </div>
   );

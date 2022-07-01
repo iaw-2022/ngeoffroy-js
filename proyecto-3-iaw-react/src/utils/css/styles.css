@@ -5,7 +5,6 @@
   max-width: 250px;
 }
 .Header-style {
-
   position: relative;
   display: flex;
   align-items: center;
@@ -14,8 +13,30 @@
   min-width: max-content;
   max-height: max-content;
   padding: 5px;
-  background-color: #06283D;
+  background: #2798e3;
+  background: -moz-linear-gradient(top, #2798e3 0%, #ffffff 52%, #2798e3 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #2798e3 0%,
+    #ffffff 52%,
+    #2798e3 100%
+  );
+  background: linear-gradient(to bottom, #2798e3 0%, #ffffff 52%, #2798e3 100%);
 }
+
+.navbar__nav_text {
+  font-weight: bold;
+  font-size: 20;
+  padding-right: 2em;
+  background-image: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
 .Icons ul li {
   display: inline;
   list-style-type: none;
@@ -40,43 +61,41 @@
   color: #ffff;
 }
 
-.Titulo-Principal {
-  font-family: "Merriweather";
+.Principal__contenedor {
+  display: flex;
+  padding: 3em;
+}
+
+.Principal__titulo {
+  font-family: fantasy;
   font-style: normal;
   font-weight: 700;
-  font-size: 36px;
+  font-size: 42px;
   line-height: 45px;
-
-  color: #000000;
+  text-align: center;
+  margin-bottom: 1em;
+  background-image: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background-clip: text;
+  color: transparent;
 }
 
-.Texto-Principal {
-
-  font-family: "Open Sans";
+.Principal__texto {
+  max-width: 1000px;
+  font-family: Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 33px;
 }
 
-.Contenedor-Principal{
-  background-color: #1363DF;
-}
-
-.Contenido-Principal {
-  position: absolute;
-  width: 427px;
-  height: 222px;
-  left: 61px;
-  top: 432px;
-
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 33px;
-
-  color: #000000;
+.Principal__vermas {
+  display: block;
+  text-align: center;
+  text-decoration: none;
 }
 
 .Imagen-Equipo {
@@ -85,9 +104,20 @@
   flex-wrap: wrap;
 }
 
-.content {
+.EquipoListItem-img {
+  height: auto;
+  max-height: 250px;
+  width: auto;
+  max-width: 250px;
+}
+
+.EquiposContent {
   position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+  top: 30%;
+  left: 20%;
+}
+
+.EquipoCard {
+  width: 18rem;
+  margin-bottom: 3em;
 }

@@ -1,15 +1,13 @@
-import Header from "../sections/header";
 import silueta from "../../assets/silueta.png";
 
 export default function main() {
   return (
     <div>
-      <Header />
       <br />
-      <div className="content">
-        <div>
-          <h2 className="Titulo-Principal"> ABS </h2>
-          <p className="Texto-Principal">
+      <h2 className="Principal__titulo"> Asociación Bahiense de Softball</h2>
+      <div className="Principal__contenedor">
+        <div style={{ marginRight: "3em" }}>
+          <p className="Principal__texto">
             Contrary to popular belief, Lorem Ipsum is not simply random text.
             It has roots in a piece of classical Latin literature from 45 BC,
             making it over 2000 years old. Richard McClintock, a Latin professor
@@ -28,9 +26,9 @@ export default function main() {
             accompanied by English versions from the 1914 translation by H.
             Rackham.
           </p>
-          <a href="jugadores">Contacto</a>
+          <a href="https://www.facebook.com/ABSoftbol" class="btn btn-primary">Contactanos</a>
         </div>
-        <div className="Imagen-Equipo">
+        <div>
           <img src={silueta} alt="logo" />
         </div>
       </div>
