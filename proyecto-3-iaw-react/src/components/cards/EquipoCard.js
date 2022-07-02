@@ -1,6 +1,5 @@
 import Card from "react-bootstrap/Card";
 import { Button, ListGroup } from "react-bootstrap";
-import "./stylesCard.css";
 import { Icon } from "@iconify/react";
 import EditarEquipo from "../modals/EditarEquipo";
 import { useState } from "react";
@@ -19,41 +18,26 @@ export default function EquipoCard({ nombre, logo, nombre_estadio, capitan }) {
   };
 
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img
-        className="EquipoListItem-img"
-        variant="top"
-        src={logo}
-        style={{ borderRadius: 6 }}
-      />
+    <Card
+      className="Card__content"
+      style={{
+        width: "18rem",
+        borderRadius: "3em",
+      }}
+    >
+      <Card.Img className="EquipoCard__img" variant="top" src={logo} />
       <Card.Body>
-        <Card.Title>
+        <Card.Title className="EquipoCard__titulo">
           <h2>{nombre}</h2>
         </Card.Title>
         <ListGroup variant="flush">
           <ListGroup.Item>
             {" "}
-            <Icon icon="mdi:home" style={{ color: "red" }} />
             Disputa sus partidos como local en el {nombre_estadio}
           </ListGroup.Item>
           <ListGroup.Item>Su capitán es {capitan}</ListGroup.Item>
         </ListGroup>
-        <Button
-          type="button"
-          className="btn btn-warning"
-          onClick={handleEditarEquipo}
-        >
-          Editar equipo
-        </Button>
-        <Button variant="danger">Borrar Equipo</Button>
       </Card.Body>
-      {showEditarModal && (
-        <EditarEquipo
-          open={showEditarModal}
-          setOpen={setShowEditarModal}
-          equipo={equipo}
-        />
-      )}
     </Card>
   );
 }

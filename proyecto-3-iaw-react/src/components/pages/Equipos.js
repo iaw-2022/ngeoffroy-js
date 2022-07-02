@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { loadEquipos } from "../../utils/loaders";
 import EquipoCard from "../cards/EquipoCard";
-import Header from "../sections/header";
-import { Button } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 export default function Equipos() {
   const [equipos, setEquipos] = useState([]);
@@ -12,22 +11,17 @@ export default function Equipos() {
   }, []);
 
   return (
-    <div>
-      <Header />
-      <Button> Registrar nuevo equipo </Button>
-      <ul>
+    <div class="Equipo__content">
+      <Row>
         {equipos.map((equipo) => (
-          <li>
-            {" "}
-            <EquipoCard
-              nombre={equipo.nombre}
-              logo={equipo.logo}
-              nombre_estadio={equipo.nombre_estadio}
-              capitan={equipo.capitan}
-            />
-          </li>
+          <EquipoCard
+            nombre={equipo.nombre}
+            logo={equipo.logo}
+            nombre_estadio={equipo.nombre_estadio}
+            capitan={equipo.capitan}
+          />
         ))}
-      </ul>
+      </Row>
     </div>
   );
 }
