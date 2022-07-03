@@ -12,8 +12,12 @@ export default function Localidades() {
     loadLocalidades(setLocalidades);
   }, [localidadesFiltradas]);
 
+  const transformInput = (input) => {
+    return input.charAt(0).toUpperCase() + input.slice(1);
+  }
+
   const handleFiltrarLocalidades = (e) => {
-    setInputBuscar(e.target.value);
+    setInputBuscar(transformInput(e.target.value));
     const numberInput = parseInt(e.target.value,10) 
     let dataLocalidades = localidades.filter(
       (localidad) =>

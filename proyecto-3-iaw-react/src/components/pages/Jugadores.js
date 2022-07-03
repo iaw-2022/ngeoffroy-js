@@ -12,13 +12,18 @@ export default function Partidos() {
     loadJugadores(setJugadores);
   }, [jugadoresFiltrados]);
 
+  const transformInput = (input) => {
+    return input.charAt(0).toUpperCase() + input.slice(1);
+  }
+
   const handleFiltrarJugadores = (e) => {
-    setInputBuscar(e.target.value);
+    setInputBuscar(transformInput(e.target.value));
+    const numberInput = parseInt(e.target.value,10) 
     let dataJugadores = jugadores.filter(
       (jugador) =>
         jugador.nombre === inputBuscar ||
         jugador.apellido === inputBuscar ||
-        jugador.dni === inputBuscar ||
+        jugador.dni === numberInput ||
         jugador.sexo === inputBuscar ||
         jugador.puesto === inputBuscar ||
         jugador.fecha_nac === inputBuscar ||

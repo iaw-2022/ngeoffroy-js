@@ -12,15 +12,19 @@ export default function Localidades() {
     loadPartidos(setPartidos);
   }, [partidosFiltrados]);
 
+  const transformInput = (input) => {
+    return input.charAt(0).toUpperCase() + input.slice(1);
+  };
+
   const handleFiltrarPartidos = (e) => {
-    setInputBuscar(e.target.value);
+    setInputBuscar(transformInput(e.target.value));
     let dataPartidos = partidos.filter(
       (partido) =>
         partido.equipo_local === inputBuscar ||
         partido.equipo_visitante === inputBuscar ||
         partido.localidad_nombre === inputBuscar ||
         partido.torneo_nombre === inputBuscar ||
-        partido.estado === inputBuscar
+        partido.estado === inputBuscar.toUpperCase()
     );
     setPartidosFiltrados(dataPartidos);
   };

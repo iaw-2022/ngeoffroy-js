@@ -12,8 +12,12 @@ export default function Localidades() {
     loadTorneos(setTorneos);
   }, [torneosFiltrados]);
 
+  const transformInput = (input) => {
+    return input.charAt(0).toUpperCase() + input.slice(1);
+  }
+
   const handleFiltrarTorneos = (e) => {
-    setInputBuscar(e.target.value);
+    setInputBuscar(transformInput(e.target.value));
     let dataTorneos = torneos.filter(
       (torneo) =>
         torneo.nombre === inputBuscar ||

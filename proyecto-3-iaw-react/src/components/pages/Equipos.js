@@ -12,8 +12,12 @@ export default function Equipos() {
     loadEquipos(setEquipos);
   }, [equiposFiltrados]);
 
+  const transformInput = (input) => {
+    return input.charAt(0).toUpperCase() + input.slice(1);
+  }
+
   const handleFiltrarEquipos = (e) => {
-    setInputBuscar(e.target.value);
+    setInputBuscar(transformInput(e.target.value));
     let dataEquipos = equipos.filter(
       (equipo) =>
         equipo.nombre === inputBuscar ||
