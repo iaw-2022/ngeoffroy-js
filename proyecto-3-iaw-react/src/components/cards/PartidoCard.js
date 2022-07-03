@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import { ListGroup, Row, Col } from "react-bootstrap";
-import versus from "../../assets/versus2.jpg";
 import matchday from "../../assets/matchday.png";
 import matchday2 from "../../assets/matchday2.png";
 
