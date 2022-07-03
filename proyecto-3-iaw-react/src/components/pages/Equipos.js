@@ -11,7 +11,7 @@ export default function Equipos() {
   }, []);
 
   return (
-    <div class="Equipo__content">
+    <div class="Component__content">
       <Row>
         {equipos.map((equipo) => (
           <EquipoCard

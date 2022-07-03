@@ -1,6 +1,7 @@
 import silueta from "../../assets/silueta.png";
 
-export default function main() {
+export default function Principal() {
+
   return (
     <div>
       <br />
@@ -26,7 +27,9 @@ export default function main() {
             accompanied by English versions from the 1914 translation by H.
             Rackham.
           </p>
-          <a href="https://www.facebook.com/ABSoftbol" class="btn btn-primary">Contactanos</a>
+          <a href="https://www.facebook.com/ABSoftbol" class="btn btn-primary">
+            Contactanos
+          </a>
         </div>
         <div>
           <img src={silueta} alt="logo" />

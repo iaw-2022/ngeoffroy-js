@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Button, FormControl, Form } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 import ball from "../../assets/ball.png";
 import { FaUserFriends } from "react-icons/fa";
@@ -11,7 +11,7 @@ export default function navbar() {
         <Container>
           <Navbar.Brand
             as={Link}
-            to="/admin"
+            to="/principal"
             className="navbar__brand"
           ></Navbar.Brand>
           <Navbar.Toggle
@@ -19,7 +19,7 @@ export default function navbar() {
             aria-controls="responsive-navbar-nav"
           />
           <Navbar.Collapse className="navbar__collapse">
-            <Nav.Link as={Link} to="/equipos" className="navbar__link">
+            <Nav.Link as={Link} to="/principal" className="navbar__link">
               <img
                 src={ball}
                 className="Logo-header"
@@ -29,32 +29,41 @@ export default function navbar() {
               />
             </Nav.Link>
             <Nav id="navbar__nav">
-              <Nav.Link as={Link} to="/admin" className="navbar__link">
+              <Nav.Link as={Link} to="/equipos" className="navbar__link">
                 <div className="navbar__nav_text" style={{ fontSize: 22 }}>
                   Equipos
                 </div>
               </Nav.Link>
-              <Nav.Link as={Link} to="/profesores" className="navbar__link">
+              <Nav.Link as={Link} to="/jugadores" className="navbar__link">
                 <div className="navbar__nav_text" style={{ fontSize: 22 }}>
                   Jugadores
                 </div>
               </Nav.Link>
-              <Nav.Link as={Link} to="/profesores" className="navbar__link">
+              <Nav.Link as={Link} to="/partidos" className="navbar__link">
                 <div className="navbar__nav_text" style={{ fontSize: 22 }}>
                   Partidos
                 </div>
               </Nav.Link>
-              <Nav.Link as={Link} to="/profesores" className="navbar__link">
+              <Nav.Link as={Link} to="/torneos" className="navbar__link">
                 <div className="navbar__nav_text" style={{ fontSize: 22 }}>
                   Torneos
                 </div>
               </Nav.Link>
-              <Nav.Link as={Link} to="/profesores" className="navbar__link">
+              <Nav.Link as={Link} to="/localidades" className="navbar__link">
                 <div className="navbar__nav_text" style={{ fontSize: 22 }}>
                   Localidades
                 </div>
               </Nav.Link>
             </Nav>
+            <Form className="d-flex">
+              <FormControl
+                type="search"
+                placeholder="Buscar"
+                className="me-2"
+                aria-label="Search"
+              />
+              <Button variant="outline-info">Buscar</Button>
+            </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>

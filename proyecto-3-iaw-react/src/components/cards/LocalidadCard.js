@@ -1,8 +1,9 @@
 import Card from "react-bootstrap/Card";
 import { ListGroup } from "react-bootstrap";
 import EditarEquipo from "../modals/EditarEquipo";
+import ciudad from "../../assets/ciudad.jpg";
 
-export default function EquipoCard({ nombre, logo, nombre_estadio, capitan }) {
+export default function LocalidadCard({ nombre, cod_postal, cant_habitantes }) {
   return (
     <Card
       className="Card__content"
@@ -12,7 +13,7 @@ export default function EquipoCard({ nombre, logo, nombre_estadio, capitan }) {
         borderImage: "linear-gradient(to right, #94cfe9, #949de9) 1"
       }}
     >
-      <Card.Img className="EquipoCard__img" variant="top" src={logo} />
+      <Card.Img className="EquipoCard__img" variant="top" src={ciudad} />
       <Card.Body>
         <Card.Title className="Card__titulo">
           <h2>{nombre}</h2>
@@ -20,9 +21,9 @@ export default function EquipoCard({ nombre, logo, nombre_estadio, capitan }) {
         <ListGroup variant="flush">
           <ListGroup.Item>
             {" "}
-            Disputa sus partidos como local en el {nombre_estadio}
+            El código postal de dicha ubicación es {cod_postal}
           </ListGroup.Item>
-          <ListGroup.Item>Su capitán es {capitan}</ListGroup.Item>
+          <ListGroup.Item>¡{nombre} tiene {cant_habitantes} habitantes!</ListGroup.Item>
         </ListGroup>
       </Card.Body>
     </Card>

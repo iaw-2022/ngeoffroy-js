@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { loadTorneos } from "../../utils/loaders";
+import { Row } from "react-bootstrap";
+import TorneoCard from "../cards/TorneoCard";
 
 export default function Localidades() {
   const [torneos, setTorneos] = useState([]);
@@ -9,12 +11,17 @@ export default function Localidades() {
   }, []);
 
   return (
-    <div>
-      <ul>
+    <div class="Component__content">
+      <Row>
         {torneos.map((torneo) => (
-          <li> {torneo.nombre}</li>
+          <TorneoCard
+            nombre={torneo.nombre}
+            logo={torneo.logo}
+            fecha_ini={torneo.fecha_ini}
+            fecha_fin={torneo.fecha_fin}
+          />
         ))}
-      </ul>
+      </Row>
     </div>
   );
 }

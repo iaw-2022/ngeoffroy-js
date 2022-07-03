@@ -2,7 +2,7 @@ import Card from "react-bootstrap/Card";
 import { ListGroup } from "react-bootstrap";
 import EditarEquipo from "../modals/EditarEquipo";
 
-export default function EquipoCard({ nombre, logo, nombre_estadio, capitan }) {
+export default function LocalidadCard({ nombre, logo, fecha_ini, fecha_fin }) {
   return (
     <Card
       className="Card__content"
@@ -12,17 +12,20 @@ export default function EquipoCard({ nombre, logo, nombre_estadio, capitan }) {
         borderImage: "linear-gradient(to right, #94cfe9, #949de9) 1"
       }}
     >
-      <Card.Img className="EquipoCard__img" variant="top" src={logo} />
+      <Card.Img className="Torneo__logo" variant="top" src={logo} />
       <Card.Body>
-        <Card.Title className="Card__titulo">
+        <Card.Title className="Torneo__titulo">
           <h2>{nombre}</h2>
         </Card.Title>
         <ListGroup variant="flush">
           <ListGroup.Item>
             {" "}
-            Disputa sus partidos como local en el {nombre_estadio}
+            La fecha de inicio del evento es el dia {fecha_ini}
           </ListGroup.Item>
-          <ListGroup.Item>Su capitán es {capitan}</ListGroup.Item>
+          <ListGroup.Item>
+            {" "}
+            La fecha de finalización del evento es el dia {fecha_fin}
+          </ListGroup.Item>
         </ListGroup>
       </Card.Body>
     </Card>
