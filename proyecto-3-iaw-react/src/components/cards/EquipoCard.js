@@ -1,6 +1,5 @@
 import Card from "react-bootstrap/Card";
 import { ListGroup } from "react-bootstrap";
-import EditarEquipo from "../modals/EditarEquipo";
 
 export default function EquipoCard({ nombre, logo, nombre_estadio, capitan }) {
   return (

@@ -1,5 +1,4 @@
-import principal from "./components/pages/principal";
-import Header from "./components/sections/header";
+import "../../utils/css/styles.css";
 
 function App() {
   return (

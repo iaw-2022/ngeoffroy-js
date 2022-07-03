@@ -1,6 +1,5 @@
 import Card from "react-bootstrap/Card";
 import { ListGroup } from "react-bootstrap";
-import EditarEquipo from "../modals/EditarEquipo";
 import ciudad from "../../assets/ciudad.jpg";
 
 export default function LocalidadCard({ nombre, cod_postal, cant_habitantes }) {

@@ -8,6 +8,7 @@ import Jugadores from "./components/pages/Jugadores";
 import Localidades from "./components/pages/Localidades";
 import Navbar from "./components/sections/navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./utils/css/styles.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 

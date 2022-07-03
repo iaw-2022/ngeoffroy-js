@@ -1,6 +1,5 @@
 import Card from "react-bootstrap/Card";
 import { ListGroup } from "react-bootstrap";
-import EditarEquipo from "../modals/EditarEquipo";
 
 export default function LocalidadCard({ nombre, logo, fecha_ini, fecha_fin }) {
   return (
