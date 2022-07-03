@@ -14,29 +14,32 @@ export default function Localidades() {
 
   const handleFiltrarLocalidades = (e) => {
     setInputBuscar(e.target.value);
+    const numberInput = parseInt(e.target.value,10) 
     let dataLocalidades = localidades.filter(
       (localidad) =>
         localidad.nombre === inputBuscar ||
-        localidad.cod_postal === inputBuscar ||
-        localidad.cant_habitantes === inputBuscar
+        localidad.cod_postal === numberInput ||
+        localidad.cant_habitantes === numberInput
     );
     setLocalidadesFiltradas(dataLocalidades);
   };
 
   return (
     <div className="Component__content">
-      <input
-        type="text"
-        className="Buscar-input"
-        placeholder="Buscar localidades."
-        aria-label=""
-        aria-describedby="basic-addon1"
-        onChange={(e) => handleFiltrarLocalidades(e)}
-      ></input>
-      <Button variant="outline-info" onClick={handleFiltrarLocalidades}>
-        {" "}
-        Buscar{" "}
-      </Button>
+      <div className="Buscar__div">
+        <input
+          type="text"
+          className="Buscar-input"
+          placeholder="Buscar localidades."
+          aria-label=""
+          aria-describedby="basic-addon1"
+          onChange={(e) => handleFiltrarLocalidades(e)}
+        ></input>
+        <Button variant="btn btn-info" onClick={handleFiltrarLocalidades}>
+          {" "}
+          Buscar{" "}
+        </Button>
+      </div>
       <Row>
         {localidadesFiltradas.length > 0 &&
           localidadesFiltradas.map((localidad) => (

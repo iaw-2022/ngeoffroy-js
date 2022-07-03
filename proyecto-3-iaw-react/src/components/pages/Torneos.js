@@ -25,18 +25,20 @@ export default function Localidades() {
 
   return (
     <div className="Component__content">
-      <input
-        type="text"
-        className="Buscar-input"
-        placeholder="Buscar torneos."
-        aria-label=""
-        aria-describedby="basic-addon1"
-        onChange={(e) => handleFiltrarTorneos(e)}
-      ></input>
-      <Button variant="outline-info" onClick={handleFiltrarTorneos}>
-        {" "}
-        Buscar{" "}
-      </Button>
+      <div className="Buscar__div">
+        <input
+          type="text"
+          className="Buscar-input"
+          placeholder="Buscar torneos."
+          aria-label=""
+          aria-describedby="basic-addon1"
+          onChange={(e) => handleFiltrarTorneos(e)}
+        ></input>
+        <Button variant="btn btn-info" onClick={handleFiltrarTorneos}>
+          {" "}
+          Buscar{" "}
+        </Button>
+      </div>
       <Row>
         {torneosFiltrados.length > 0 &&
           torneosFiltrados.map((torneo) => (

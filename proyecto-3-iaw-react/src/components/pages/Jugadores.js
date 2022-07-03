@@ -29,18 +29,20 @@ export default function Partidos() {
 
   return (
     <div class="Component__content">
-      <input
-        type="text"
-        className="Buscar-input"
-        placeholder="Buscar jugadores."
-        aria-label=""
-        aria-describedby="basic-addon1"
-        onChange={(e) => handleFiltrarJugadores(e)}
-      ></input>
-      <Button variant="outline-info" onClick={handleFiltrarJugadores}>
-        {" "}
-        Buscar{" "}
-      </Button>
+      <div className="Buscar__div">
+        <input
+          type="text"
+          className="Buscar-input"
+          placeholder="Buscar jugadores."
+          aria-label=""
+          aria-describedby="basic-addon1"
+          onChange={(e) => handleFiltrarJugadores(e)}
+        ></input>
+        <Button variant="btn btn-info" onClick={handleFiltrarJugadores}>
+          {" "}
+          Buscar{" "}
+        </Button>
+      </div>
       <Row>
         {jugadoresFiltrados.length > 0 &&
           jugadoresFiltrados.map((jugador) => (

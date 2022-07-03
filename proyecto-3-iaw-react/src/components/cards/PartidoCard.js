@@ -30,7 +30,7 @@ export default function LocalidadCard({
         width: "18rem",
         borderRadius: "3em",
         borderWidth: "1em",
-        borderColor:borderColorEstado
+        borderColor: borderColorEstado,
       }}
     >
       <Card.Body>
@@ -38,21 +38,21 @@ export default function LocalidadCard({
           <Card.Img className="Partido__matchday-icon" src={matchday} />
           <Card.Img className="Partido__matchday-icon" src={matchday2} />
         </div>
-        <Card.Title className="Partido__titulo" style={{ fontWeight: "bold", color:borderColorEstado, textDecoration:'underline' }}>
+        <Card.Title
+          className="Partido__titulo"
+          style={{
+            fontWeight: "bold",
+            color: borderColorEstado,
+            textDecoration: "underline",
+          }}
+        >
           {estado}
         </Card.Title>
         <ListGroup variant="flush">
           <ListGroup.Item>
             <Row className="Partido__content-row">
               <Col className="Partido__equipos-style">{equipo_local}</Col>
-              <Col>
-                {" "}
-                <Card.Img
-                  className="Partido__logo-size"
-                  variant="top"
-                  src={versus}
-                />{" "}
-              </Col>
+              <Col className="Partido__resultado-style">-</Col>
               <Col className="Partido__equipos-style">{equipo_visitante}</Col>
             </Row>
             <br />

@@ -19,7 +19,7 @@ export default function navbar() {
             aria-controls="responsive-navbar-nav"
           />
           <Navbar.Collapse className="navbar__collapse">
-            <Nav.Link as={Link} to="/principal" className="navbar__link">
+            <Nav.Link as={Link} to="/" className="navbar__link">
               <img
                 src={ball}
                 className="Logo-header"
