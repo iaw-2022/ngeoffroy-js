@@ -18,13 +18,14 @@ export default function Partidos() {
 
   const handleFiltrarJugadores = (e) => {
     setInputBuscar(transformInput(e.target.value));
+    const sexoInput = e.target.value;
     const numberInput = parseInt(e.target.value,10) 
     let dataJugadores = jugadores.filter(
       (jugador) =>
         jugador.nombre === inputBuscar ||
         jugador.apellido === inputBuscar ||
         jugador.dni === numberInput ||
-        jugador.sexo === inputBuscar ||
+        jugador.sexo === sexoInput ||
         jugador.puesto === inputBuscar ||
         jugador.fecha_nac === inputBuscar ||
         jugador.equipo_nombre === inputBuscar
