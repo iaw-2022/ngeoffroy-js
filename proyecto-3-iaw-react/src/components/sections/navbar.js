@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Container, Button, FormControl, Form } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 import ball from "../../assets/ball.png";
 import { FaUserFriends } from "react-icons/fa";
@@ -55,15 +55,6 @@ export default function navbar() {
                 </div>
               </Nav.Link>
             </Nav>
-            <Form className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="Buscar"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-info">Buscar</Button>
-            </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>
