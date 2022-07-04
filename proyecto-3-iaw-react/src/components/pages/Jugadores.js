@@ -3,34 +3,45 @@ import { loadJugadores } from "../../utils/loaders";
 import { Row, Button } from "react-bootstrap";
 import JugadorCard from "../cards/JugadorCard";
 
-export default function Partidos() {
+export default function Jugadores() {
   const [jugadores, setJugadores] = useState([]);
   const [inputBuscar, setInputBuscar] = useState("");
   const [jugadoresFiltrados, setJugadoresFiltrados] = useState([]);
+  const [botonRestablecer, setBotonRestablecer] = useState(false);
 
   useEffect(() => {
     loadJugadores(setJugadores);
   }, [jugadoresFiltrados]);
 
   const transformInput = (input) => {
-    return input.charAt(0).toUpperCase() + input.slice(1);
-  }
+    const splitStr = input.toLowerCase().split(" ");
+    for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] =
+        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(" ");
+  };
 
-  const handleFiltrarJugadores = (e) => {
-    setInputBuscar(transformInput(e.target.value));
-    const sexoInput = e.target.value;
-    const numberInput = parseInt(e.target.value,10) 
+  const handleRestablecerFiltro = () => {
+    setBotonRestablecer(false);
+    setJugadoresFiltrados([]);
+  };
+
+  const handleFiltrarJugadores = () => {
+    const dataTransform = transformInput(inputBuscar);
+    const dniInput = parseInt(inputBuscar);
     let dataJugadores = jugadores.filter(
       (jugador) =>
-        jugador.nombre === inputBuscar ||
-        jugador.apellido === inputBuscar ||
-        jugador.dni === numberInput ||
-        jugador.sexo === sexoInput ||
-        jugador.puesto === inputBuscar ||
+        jugador.nombre === dataTransform ||
+        jugador.apellido === dataTransform ||
+        jugador.dni === dniInput ||
+        jugador.sexo === inputBuscar.toLowerCase() ||
+        jugador.puesto === dataTransform ||
         jugador.fecha_nac === inputBuscar ||
-        jugador.equipo_nombre === inputBuscar
+        jugador.equipo_nombre === dataTransform
     );
     setJugadoresFiltrados(dataJugadores);
+    setBotonRestablecer(true);
   };
 
   return (
@@ -42,12 +53,24 @@ export default function Partidos() {
           placeholder="Buscar jugadores."
           aria-label=""
           aria-describedby="basic-addon1"
-          onChange={(e) => handleFiltrarJugadores(e)}
+          onChange={(e) => setInputBuscar(e.target.value)}
         ></input>
-        <Button variant="btn btn-info" onClick={handleFiltrarJugadores}>
-          {" "}
-          Buscar{" "}
-        </Button>
+        {!botonRestablecer && (
+          <Button variant="btn btn-info" onClick={handleFiltrarJugadores}>
+            {" "}
+            Buscar{" "}
+          </Button>
+        )}
+        {botonRestablecer && (
+          <Button
+            variant="btn btn-success"
+            onClick={handleRestablecerFiltro}
+            style={{ marginLeft: "1em" }}
+          >
+            {" "}
+            Restablecer filtros{" "}
+          </Button>
+        )}
       </div>
       <Row>
         {jugadoresFiltrados.length > 0 &&
@@ -60,6 +83,7 @@ export default function Partidos() {
               sexo={jugador.sexo}
               puesto={jugador.puesto}
               fecha_nac={jugador.fecha_nac}
+              equipo_nombre={jugador.equipo_nombre}
             />
           ))}
 
@@ -73,6 +97,7 @@ export default function Partidos() {
               sexo={jugador.sexo}
               puesto={jugador.puesto}
               fecha_nac={jugador.fecha_nac}
+              equipo_nombre={jugador.equipo_nombre}
             />
           ))}
       </Row>

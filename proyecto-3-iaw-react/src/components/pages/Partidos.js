@@ -7,26 +7,38 @@ export default function Localidades() {
   const [partidos, setPartidos] = useState([]);
   const [inputBuscar, setInputBuscar] = useState("");
   const [partidosFiltrados, setPartidosFiltrados] = useState([]);
+  const [botonRestablecer, setBotonRestablecer] = useState(false);
 
   useEffect(() => {
     loadPartidos(setPartidos);
   }, [partidosFiltrados]);
 
   const transformInput = (input) => {
-    return input.charAt(0).toUpperCase() + input.slice(1);
+    const splitStr = input.toLowerCase().split(" ");
+    for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] =
+        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(" ");
   };
 
-  const handleFiltrarPartidos = (e) => {
-    setInputBuscar(transformInput(e.target.value));
+  const handleRestablecerFiltro = () => {
+    setBotonRestablecer(false);
+    setPartidosFiltrados([]);
+  };
+
+  const handleFiltrarPartidos = () => {
+    const dataTransform = transformInput(inputBuscar);
     let dataPartidos = partidos.filter(
       (partido) =>
-        partido.equipo_local === inputBuscar ||
-        partido.equipo_visitante === inputBuscar ||
-        partido.localidad_nombre === inputBuscar ||
-        partido.torneo_nombre === inputBuscar ||
+        partido.equipo_local === dataTransform ||
+        partido.equipo_visitante === dataTransform ||
+        partido.localidad_nombre === dataTransform ||
+        partido.torneo_nombre === dataTransform ||
         partido.estado === inputBuscar.toUpperCase()
     );
     setPartidosFiltrados(dataPartidos);
+    setBotonRestablecer(true);
   };
 
   return (
@@ -38,12 +50,24 @@ export default function Localidades() {
           placeholder="Buscar torneos."
           aria-label=""
           aria-describedby="basic-addon1"
-          onChange={(e) => handleFiltrarPartidos(e)}
+          onChange={(e) => setInputBuscar(e.target.value)}
         ></input>
-        <Button variant="btn btn-info" onClick={handleFiltrarPartidos}>
-          {" "}
-          Buscar{" "}
-        </Button>
+        {!botonRestablecer && (
+          <Button variant="btn btn-info" onClick={handleFiltrarPartidos}>
+            {" "}
+            Buscar{" "}
+          </Button>
+        )}
+        {botonRestablecer && (
+          <Button
+            variant="btn btn-success"
+            onClick={handleRestablecerFiltro}
+            style={{ marginLeft: "1em" }}
+          >
+            {" "}
+            Restablecer filtros{" "}
+          </Button>
+        )}
       </div>
       <Row>
         {partidosFiltrados.length > 0 &&

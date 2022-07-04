@@ -7,24 +7,36 @@ export default function Equipos() {
   const [equipos, setEquipos] = useState([]);
   const [inputBuscar, setInputBuscar] = useState("");
   const [equiposFiltrados, setEquiposFiltrados] = useState([]);
+  const [botonRestablecer, setBotonRestablecer] = useState(false);
 
   useEffect(() => {
     loadEquipos(setEquipos);
   }, [equiposFiltrados]);
 
   const transformInput = (input) => {
-    return input.charAt(0).toUpperCase() + input.slice(1);
-  }
+    const splitStr = input.toLowerCase().split(" ");
+    for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] =
+        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(" ");
+  };
 
-  const handleFiltrarEquipos = (e) => {
-    setInputBuscar(transformInput(e.target.value));
+  const handleRestablecerFiltro = () => {
+    setBotonRestablecer(false);
+    setEquiposFiltrados([]);
+  };
+
+  const handleFiltrarEquipos = () => {
+    const dataTransform = transformInput(inputBuscar);
     let dataEquipos = equipos.filter(
       (equipo) =>
-        equipo.nombre === inputBuscar ||
-        equipo.capitan === inputBuscar ||
-        equipo.nombre_estadio === inputBuscar
+        equipo.nombre === dataTransform ||
+        equipo.capitan === dataTransform ||
+        equipo.nombre_estadio === dataTransform
     );
     setEquiposFiltrados(dataEquipos);
+    setBotonRestablecer(true);
   };
 
   return (
@@ -36,15 +48,24 @@ export default function Equipos() {
           placeholder="Buscar equipos."
           aria-label=""
           aria-describedby="basic-addon1"
-          onChange={(e) => handleFiltrarEquipos(e)}
+          onChange={(e) => setInputBuscar(e.target.value)}
         ></input>
-        <Button
-          variant="btn btn-info"
-          onClick={handleFiltrarEquipos}
-        >
-          {" "}
-          Buscar{" "}
-        </Button>
+        {!botonRestablecer && (
+          <Button variant="btn btn-info" onClick={handleFiltrarEquipos}>
+            {" "}
+            Buscar{" "}
+          </Button>
+        )}
+        {botonRestablecer && (
+          <Button
+            variant="btn btn-success"
+            onClick={handleRestablecerFiltro}
+            style={{ marginLeft: "1em" }}
+          >
+            {" "}
+            Restablecer filtros{" "}
+          </Button>
+        )}
       </div>
       <Row>
         {equiposFiltrados.length > 0 &&

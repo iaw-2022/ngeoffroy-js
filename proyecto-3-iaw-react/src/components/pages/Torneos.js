@@ -7,24 +7,36 @@ export default function Localidades() {
   const [torneos, setTorneos] = useState([]);
   const [inputBuscar, setInputBuscar] = useState("");
   const [torneosFiltrados, setTorneosFiltrados] = useState([]);
+  const [botonRestablecer, setBotonRestablecer] = useState(false);
 
   useEffect(() => {
     loadTorneos(setTorneos);
   }, [torneosFiltrados]);
 
   const transformInput = (input) => {
-    return input.charAt(0).toUpperCase() + input.slice(1);
-  }
+    const splitStr = input.toLowerCase().split(" ");
+    for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] =
+        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(" ");
+  };
 
-  const handleFiltrarTorneos = (e) => {
-    setInputBuscar(transformInput(e.target.value));
+  const handleRestablecerFiltro = () => {
+    setBotonRestablecer(false);
+    setTorneosFiltrados([]);
+  };
+
+  const handleFiltrarTorneos = () => {
+    const dataTransform = transformInput(inputBuscar);
     let dataTorneos = torneos.filter(
       (torneo) =>
-        torneo.nombre === inputBuscar ||
+        torneo.nombre === dataTransform ||
         torneo.fecha_fin === inputBuscar ||
         torneo.fecha_ini === inputBuscar
     );
     setTorneosFiltrados(dataTorneos);
+    setBotonRestablecer(true);
   };
 
   return (
@@ -36,12 +48,24 @@ export default function Localidades() {
           placeholder="Buscar torneos."
           aria-label=""
           aria-describedby="basic-addon1"
-          onChange={(e) => handleFiltrarTorneos(e)}
+          onChange={(e) => setInputBuscar(e.target.value)}
         ></input>
-        <Button variant="btn btn-info" onClick={handleFiltrarTorneos}>
-          {" "}
-          Buscar{" "}
-        </Button>
+        {!botonRestablecer && (
+          <Button variant="btn btn-info" onClick={handleFiltrarTorneos}>
+            {" "}
+            Buscar{" "}
+          </Button>
+        )}
+        {botonRestablecer && (
+          <Button
+            variant="btn btn-success"
+            onClick={handleRestablecerFiltro}
+            style={{ marginLeft: "1em" }}
+          >
+            {" "}
+            Restablecer filtros{" "}
+          </Button>
+        )}
       </div>
       <Row>
         {torneosFiltrados.length > 0 &&

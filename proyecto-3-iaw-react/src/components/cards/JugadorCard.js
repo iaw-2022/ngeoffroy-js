@@ -9,6 +9,7 @@ export default function EquipoCard({
   puesto,
   sexo,
   fecha_nac,
+  equipo_nombre
 }) {
   return (
     <Card
@@ -36,6 +37,7 @@ export default function EquipoCard({
             Sexo: {sexo} <br />
             Puesto: {puesto} <br />
             Dni: {dni} <br />
+            Equipo: {equipo_nombre}
           </ListGroup.Item>
         </ListGroup>
       </Card.Body>

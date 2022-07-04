@@ -7,25 +7,37 @@ export default function Localidades() {
   const [localidades, setLocalidades] = useState([]);
   const [inputBuscar, setInputBuscar] = useState("");
   const [localidadesFiltradas, setLocalidadesFiltradas] = useState([]);
+  const [botonRestablecer, setBotonRestablecer] = useState(false);
 
   useEffect(() => {
     loadLocalidades(setLocalidades);
   }, [localidadesFiltradas]);
 
   const transformInput = (input) => {
-    return input.charAt(0).toUpperCase() + input.slice(1);
-  }
+    const splitStr = input.toLowerCase().split(" ");
+    for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] =
+        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(" ");
+  };
 
-  const handleFiltrarLocalidades = (e) => {
-    setInputBuscar(transformInput(e.target.value));
-    const numberInput = parseInt(e.target.value,10) 
+  const handleRestablecerFiltro = () => {
+    setBotonRestablecer(false);
+    setLocalidadesFiltradas([]);
+  };
+
+  const handleFiltrarLocalidades = () => {
+    const dataTransform = transformInput(inputBuscar);
+    const numberInput = parseInt(inputBuscar, 10);
     let dataLocalidades = localidades.filter(
       (localidad) =>
-        localidad.nombre === inputBuscar ||
+        localidad.nombre === dataTransform ||
         localidad.cod_postal === numberInput ||
         localidad.cant_habitantes === numberInput
     );
     setLocalidadesFiltradas(dataLocalidades);
+    setBotonRestablecer(true);
   };
 
   return (
@@ -37,12 +49,24 @@ export default function Localidades() {
           placeholder="Buscar localidades."
           aria-label=""
           aria-describedby="basic-addon1"
-          onChange={(e) => handleFiltrarLocalidades(e)}
+          onChange={(e) => setInputBuscar(e.target.value)}
         ></input>
-        <Button variant="btn btn-info" onClick={handleFiltrarLocalidades}>
-          {" "}
-          Buscar{" "}
-        </Button>
+        {!botonRestablecer && (
+          <Button variant="btn btn-info" onClick={handleFiltrarLocalidades}>
+            {" "}
+            Buscar{" "}
+          </Button>
+        )}
+        {botonRestablecer && (
+          <Button
+            variant="btn btn-success"
+            onClick={handleRestablecerFiltro}
+            style={{ marginLeft: "1em" }}
+          >
+            {" "}
+            Restablecer filtros{" "}
+          </Button>
+        )}
       </div>
       <Row>
         {localidadesFiltradas.length > 0 &&
